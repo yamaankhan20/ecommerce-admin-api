@@ -10,7 +10,7 @@ class User(Base):
     name = Column(String(255), nullable=False, index=True)
     email = Column(String(255), unique=True, nullable=False, index=True)
     address = Column(String(255), nullable=False)
-    email_verified_at = Column(String(255), nullable=False)
+    email_verified_at = Column(TIMESTAMP(), nullable=False)
     profile_photo_path = Column(String(191), nullable=True)
     otp = Column(String(191), nullable=True)
     otp_expires_at = Column(TIMESTAMP(), nullable=True)
