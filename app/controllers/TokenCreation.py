@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 
 class TokenController:
 
-    @expose_route()
+    # @expose_route()
     def post_create_demon(self):
         try:
             data = {

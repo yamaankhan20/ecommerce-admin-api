@@ -5,7 +5,8 @@ from sqlalchemy.sql.functions import user
 # from app.routes.api.User import user_routes
 from app.middleware.AuthMiddleware import AuthMiddleware
 from app.routes import router as dynamic_router
-
+from app.utils.decoraters.CustomValidation import validation_exception_handler
+from fastapi.exceptions import RequestValidationError
 
 
 app = FastAPI(
@@ -14,6 +15,8 @@ app = FastAPI(
     version = "0.0.1",
     docs_url="/documentation"
 )
+
+app.add_exception_handler(RequestValidationError, validation_exception_handler)
 
 app.add_middleware(AuthMiddleware)
 

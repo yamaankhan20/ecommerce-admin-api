@@ -2,6 +2,7 @@ import importlib
 import inspect
 import pkgutil
 from fastapi import APIRouter
+from fastapi.params import Path
 from app.utils.decoraters.expose_routes import expose_route
 
 router = APIRouter()
@@ -33,7 +34,16 @@ def include_all_controllers():
                         if method_name.startswith(f"{verb}_"):
                             path = method_name[len(verb):].lstrip("_")
                             path = path.replace("_", "-") or "/"
-                            full_path = f"{prefix}/{path}"
+
+                            sig = inspect.signature(method)
+                            path_params = [
+                                f"{{{name}}}" for name, param in sig.parameters.items()
+                                if isinstance(param.default, Path)
+                            ]
+
+                            full_path = f"{prefix}/{path}".rstrip("/")
+                            if path_params:
+                                full_path += "/" + "/".join(path_params)
 
                             response_model = getattr(method, "_response_model", None)
 

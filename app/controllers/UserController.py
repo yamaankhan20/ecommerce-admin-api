@@ -1,19 +1,24 @@
+from fastapi import HTTPException
+from app.models.User import User
+from app.schemas.user_schema import UserResponse  # if needed
+from sqlalchemy.orm import Session
+from fastapi import Depends, Query, Path
+from app.db.session import get_db
 from app.utils.decoraters.expose_routes import expose_route
+from fastapi.responses import JSONResponse
 
 class UserController:
 
     @expose_route()
-    def get_info(self):
-        return {"msg": "get user info"}
+    def get_user_info_single(self, db: Session = Depends(get_db), user_id: int = Path(...) ):
+        try:
+            user = db.query(User).filter_by(id=user_id).first()
 
-    @expose_route()
-    def post_create(self):
-        return {"msg": "user created"}
+            if not user:
+                raise HTTPException(status_code=404, detail="User not found")
 
-    @expose_route()
-    def put_update(self):
-        return {"msg": "user updated"}
+            return user
+        except Exception as e:
+            return JSONResponse(status_code=500, content={"error": f"Unexpected error: {str(e)}"})
 
-    @expose_route()
-    def delete_remove(self):
-        return {"msg": "user removed"}
+

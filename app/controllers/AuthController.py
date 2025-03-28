@@ -17,6 +17,9 @@ class AuthController:
     @expose_route()
     def post_login_register(self, db: Session = Depends(get_db), user_data: UserCreate = Body(...)):
         try:
+            if not user_data.address:
+                raise HTTPException(status_code=400, detail="Address is required")
+
             allData = db.query(User).filter_by(email= user_data.email, address=user_data.address).first()
 
             if not allData:
