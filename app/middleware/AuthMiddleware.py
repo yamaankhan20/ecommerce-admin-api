@@ -12,7 +12,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next):
         protected_patterns = [
-            r"^/api/v1/users",
+            r"^/api/v1/user",
         ]
 
         if not any(re.match(pattern, request.url.path) for pattern in protected_patterns):

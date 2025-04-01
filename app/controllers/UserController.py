@@ -17,8 +17,14 @@ class UserController:
             if not user:
                 raise HTTPException(status_code=404, detail="User not found")
 
-            return user
+            all_user_data: dict[str, str | int] = {
+                "name":user.name,
+                "address":user.address,
+                "profile_pic":user.profile_pic,
+            }
+
+            return all_user_data
         except Exception as e:
-            return JSONResponse(status_code=500, content={"error": f"Unexpected error: {str(e)}"})
+            return JSONResponse(status_code=500, content={"error": f"{str(e.detail)}"})
 
 
