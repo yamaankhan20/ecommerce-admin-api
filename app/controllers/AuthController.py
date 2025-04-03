@@ -1,15 +1,15 @@
-import email
 import re
 from typing import Dict
 from fastapi import Depends, Body, HTTPException
 from sqlalchemy.orm import Session
+from datetime import datetime
+from fastapi.responses import JSONResponse
+from sqlalchemy.exc import IntegrityError
+
 from app.db.session import get_db
 from app.models.User import User
 from app.schemas.user_schema import UserCreate, UserResponse
-from datetime import datetime
 from app.utils.decoraters.expose_routes import expose_route
-from fastapi.responses import JSONResponse
-from sqlalchemy.exc import IntegrityError
 from app.utils.jwt_util import JwtToken
 
 class AuthController:
@@ -31,8 +31,7 @@ class AuthController:
                 new_user = User(
                     email=user_data.email,
                     address=user_data.address,
-                    active=user_data.active,
-                    banned=user_data.banned,
+                    description = user_data.description,
                     updated_at=datetime.utcnow(),
                 )
                 db.add(new_user)

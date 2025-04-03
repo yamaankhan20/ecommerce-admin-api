@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP, Text
 from sqlalchemy.sql import func
 from . import Base  # Import Base from the models package
+from sqlalchemy.orm import relationship
 
 
 class User(Base):
@@ -17,5 +18,9 @@ class User(Base):
     active = Column(Boolean(), nullable=False, default=True)
     banned = Column(Boolean(), nullable=False, default=False)
     description = Column(Text(), nullable=True)
+    website = Column(String(191), nullable=True)
+    twitter = Column(String(191), nullable=True)
     updated_at = Column(TIMESTAMP(), nullable=True)
     created_at = Column(TIMESTAMP, server_default=func.now(), nullable=False)
+
+    launchpads = relationship("Launchpad", back_populates="users", cascade="all, delete-orphan")

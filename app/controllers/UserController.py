@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from app.models.User import User
-from app.schemas.user_schema import UserResponse  # if needed
+from typing import Dict, Union
 from sqlalchemy.orm import Session
 from fastapi import Depends, Query, Path
 from app.db.session import get_db
@@ -17,14 +17,24 @@ class UserController:
             if not user:
                 raise HTTPException(status_code=404, detail="User not found")
 
-            all_user_data: dict[str, str | int] = {
+            all_user_data: Dict[str, Union[str, int, None]] = {
                 "name":user.name,
                 "address":user.address,
-                "profile_pic":user.profile_pic,
+                "profile_pic":user.profile_photo_path,
+                "short_description": (user.description[:150] + "...") if user.description and len(
+                    user.description) > 250 else user.description,
+                "description": user.description,
+                "website": user.website,
+                "twitter": user.twitter,
+                
             }
 
-            return all_user_data
+            return JSONResponse(status_code=200, content=all_user_data)
+
+        except HTTPException as e:
+            return JSONResponse(status_code=e.status_code, content={"error": e.detail})
+
         except Exception as e:
-            return JSONResponse(status_code=500, content={"error": f"{str(e.detail)}"})
+            return JSONResponse(status_code=500, content={"error": str(e)})
 
 

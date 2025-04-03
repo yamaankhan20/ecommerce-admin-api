@@ -12,6 +12,9 @@ class UserBase(BaseModel):
     otp_expires_at: Optional[datetime] = None
     active: bool = True
     banned: bool = False
+    description: Optional[str] = None
+    website: Optional[str] = None
+    twitter: Optional[str] = None
 
     class Config:
         from_attributes  = True
