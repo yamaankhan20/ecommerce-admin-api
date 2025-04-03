@@ -23,4 +23,3 @@ class User(Base):
     updated_at = Column(TIMESTAMP(), nullable=True)
     created_at = Column(TIMESTAMP, server_default=func.now(), nullable=False)
 
-    launchpads = relationship("Launchpad", back_populates="users", cascade="all, delete-orphan")
