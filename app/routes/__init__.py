@@ -53,10 +53,10 @@ def include_all_controllers():
                                 methods=[verb.upper()],
                                 name=method_name,
                                 tags=[tag_name],
-                                response_model=response_model  # ✅ important!
+                                response_model=response_model
                             )
 
-                            print(f"✅ Registered: {verb.upper()} {full_path} → {method_name}")
+                            print(f"registered routes: {verb.upper()} {full_path} → {method_name}")
 
 
 include_all_controllers()
