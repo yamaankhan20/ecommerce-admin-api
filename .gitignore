@@ -1,0 +1,49 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment folders
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment files
+.env
+.env.*
+
+# Pytest and coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Mypy, Pyre type checker caches
+.mypy_cache/
+.pyre/
+
+# Pylint, Bandit, Ruff
+.pylint.d/
+.bandit/
+ruff_cache/
+
+# FastAPI/Starlette specific
+instance/
+*.log
+*.sqlite3
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# IDE/editor config
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
