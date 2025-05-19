@@ -28,7 +28,7 @@ class ProductController:
             return JSONResponse(
                 status_code=200,
                 content={
-                    "message": "Product Created Successfully",
+                    "message": "Products Fetched Successfully",
                     "data": products_data
                 }
             )
@@ -54,7 +54,7 @@ class ProductController:
             return JSONResponse(
                 status_code=200,
                 content={
-                    "message": "Product Created Successfully",
+                    "message": "Product Fetched Successfully",
                     "data": response_data
                 }
             )
