@@ -79,33 +79,34 @@ uvicorn main:app --reload
 
 ### Products
 
-| Method | Endpoint           | Description            |
-| ------ |--------------------| ---------------------- |
-| POST   | `/create-product/` | Register a new product |
-| GET    | `/products/`       | List all products      |
-| GET    | `/product/{id}`    | View a product         |
+| Method | Endpoint            | Description            |
+| ------ |---------------------| ---------------------- |
+| POST   | `/product/create-product/` | Register a new product |
+| GET    | `/product/products/`        | List all products      |
+| GET    | `/product/product/{id}`     | View a product         |
 
 ### Sales
 
-| Method | Endpoint        | Description                     |
-| ------ | --------------- | ------------------------------- |
-| GET    | `/sales/`       | Retrieve all sales              |
-| GET    | `/sales/filter` | Filter by date/product/category |
+| Method | Endpoint              | Description                    |
+|--------|-----------------------|--------------------------------|
+| GET    | `/sales/sales/`       | Retrieve all sales             |
+| GET    | `/sales/sales-filter` | Filter by date/product/category |
+| POST   | `/sales/create-sales` | Create Sales                   |
 
 ### Revenue
 
-| Method | Endpoint           | Description                       |
-| ------ | ------------------ | --------------------------------- |
-| GET    | `/revenue/summary` | View revenue by period            |
-| GET    | `/revenue/compare` | Compare across periods/categories |
+| Method | Endpoint                   | Description                       |
+| ------ |----------------------------| --------------------------------- |
+| GET    | `/revenue/revenue-summary` | View revenue by period            |
+| GET    | `/revenue/revenue-compare` | Compare across periods/categories |
 
 ### Inventory
 
-| Method | Endpoint                  | Description                 |
-| ------ | ------------------------- | --------------------------- |
-| GET    | `/inventory/`             | Current inventory levels    |
-| PUT    | `/inventory/{product_id}` | Update inventory stock      |
-| GET    | `/inventory/low-stock`    | Products with low inventory |
+| Method | Endpoint                            | Description                 |
+| ------ |-------------------------------------| --------------------------- |
+| GET    | `/inventory/inventory`              | Current inventory levels    |
+| PUT    | `/inventory/inventory/{product_id}` | Update inventory stock      |
+| GET    | `/inventory/low-stock-inventory`    | Products with low inventory |
 
 ---
 
@@ -132,7 +133,7 @@ uvicorn main:app --reload
 
 ---
 
-## 🧪 Demo Data
+## Demo Data
 
 Run `app/utils/seed.py` to insert:
 
@@ -142,11 +143,11 @@ Run `app/utils/seed.py` to insert:
 
 ---
 
-## 📊 API Docs
+## API Docs
 
-* Swagger: `http://localhost:5000/docs`
+* Swagger: `http://localhost:5000/documentation`
 ---
 
-## ✉️ Contact
+## Contact
 
 Email: [khanyamaan1@gmail.com](mailto:khanyamaan1@gmail.com)
