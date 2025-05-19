@@ -37,8 +37,13 @@ class RevenueController:
                 }
             )
 
+
+        except HTTPException as e:
+            return JSONResponse(status_code=e.status_code, content={"error": e.detail})
+
         except Exception as e:
             return JSONResponse(status_code=500, content={"error": str(e)})
+
 
     @expose_route()
     def get_revenue_compare(
@@ -80,6 +85,10 @@ class RevenueController:
                     "data": result
                 }
             )
+
+
+        except HTTPException as e:
+            return JSONResponse(status_code=e.status_code, content={"error": e.detail})
 
         except Exception as e:
             return JSONResponse(status_code=500, content={"error": str(e)})
