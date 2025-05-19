@@ -2,7 +2,6 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.sql.functions import user
-from app.middleware.AuthMiddleware import AuthMiddleware
 from app.routes import router as dynamic_router
 from app.utils.decoraters.CustomValidation import validation_exception_handler
 from fastapi.exceptions import RequestValidationError
@@ -10,7 +9,7 @@ from fastapi.exceptions import RequestValidationError
 
 app = FastAPI(
     title = "E-commerce Admin API",
-    description = "A modular, production ready backend API built with FastAPI to power an e-commerce admin dashboard.",
+    description = "A production ready backend API built with FastAPI to power an e-commerce admin dashboard.",
     version = "0.0.1",
     docs_url="/documentation"
 )

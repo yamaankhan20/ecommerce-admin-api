@@ -2,18 +2,18 @@ from fastapi.responses import JSONResponse
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
 async def validation_exception_handler(request, exc):
-    # Custom error message for missing path/query/body params
     errors = exc.errors()
-    details = []
+    details = {}
 
     for err in errors:
         loc = err.get("loc", [])
         msg = err.get("msg", "")
-        if "path" in loc:
-            param = loc[-1]
-            details.append(f"Missing path parameter: `{param}`")
+        field = loc[-1] if loc else "unknown"
+
+        if loc[0] in {"body", "query", "path"}:
+            details[field] = f"{field} {msg}"
         else:
-            details.append(msg)
+            details[field] = msg
 
     return JSONResponse(
         status_code=HTTP_422_UNPROCESSABLE_ENTITY,

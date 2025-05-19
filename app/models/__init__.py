@@ -1,13 +1,11 @@
 from app.db.session import Base
 
 
-from .User import User
-from .Factory import Factory
-from .Launchpad import Launchpad
-from .Holder import Holder
-from .PoolStat import PoolStat
-from .Trade import Trade
+from .Product import Products
+from .Categories import Categories
+from .Sales import Sales
+from .Inventory import Inventory
 
 
 # Export all models
-__all__ = ["Base", "User", "Factory", "Launchpad", "Holder", "PoolStat", "Trade"]
+__all__ = ["Base", "Products", "Categories", "Sales", "Inventory"]

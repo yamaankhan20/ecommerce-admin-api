@@ -64,7 +64,7 @@ pip install -r requirements.txt
 ### 2. Run Demo Data Seeder (Optional)
 
 ```bash
-python app/utils/seed.py
+python app/utils/Seeders/seed.py
 ```
 
 ### 3. Start the Server
@@ -79,11 +79,11 @@ uvicorn main:app --reload
 
 ### Products
 
-| Method | Endpoint         | Description            |
-| ------ | ---------------- | ---------------------- |
-| POST   | `/products/`     | Register a new product |
-| GET    | `/products/`     | List all products      |
-| GET    | `/products/{id}` | View a product         |
+| Method | Endpoint           | Description            |
+| ------ |--------------------| ---------------------- |
+| POST   | `/create-product/` | Register a new product |
+| GET    | `/products/`       | List all products      |
+| GET    | `/product/{id}`    | View a product         |
 
 ### Sales
 
@@ -144,7 +144,7 @@ Run `app/utils/seed.py` to insert:
 
 ## 📊 API Docs
 
-* Swagger: `http://localhost:8000/docs`
+* Swagger: `http://localhost:5000/docs`
 ---
 
 ## ✉️ Contact

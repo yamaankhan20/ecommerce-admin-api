@@ -3,7 +3,6 @@ import inspect
 import pkgutil
 from fastapi import APIRouter
 from fastapi.params import Path
-from app.utils.decoraters.expose_routes import expose_route
 
 router = APIRouter()
 HTTP_METHODS = ["get", "post", "put", "delete", "patch"]
