@@ -129,7 +129,7 @@ uvicorn main:app --reload
 
 * 3NF compliant: categories and products separated
 * Indexed: `product_id`, `sale_date`, `category_id`
-* Designed to scale with real time analytics and inventory updates
+* Designed to scale with analytics and inventory updates
 
 ---
 
